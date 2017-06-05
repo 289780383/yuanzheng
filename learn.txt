@@ -1,0 +1,21 @@
+    $("#start_poi, #end_poi,#start_poi2, #end_poi2").on("click", function(e) {
+        var id = $(this).attr("id");
+        if (id == "end_poi") {
+            var v = $(".form_line").val();
+            var city = $(".form_line").children("option[value='" + v + "']").attr("endAdName");
+            local_data = the_line_data.linestasE;
+            input_auto(city, $(this));
+        } else if (id == "start_poi") {
+            var v = $(".form_line").val();
+            var city = $(".form_line").children("option[value='" + v + "']").attr("startAdName");
+            local_data = the_line_data.linestasS;
+            input_auto(city, $(this), true);
+        } else if (id == "start_poi2") {
+            local_data = the_line_data.linestasS;
+            input_auto($(".order_mask2").attr("data-bpAdName"), $(this), true);
+        } else if (id == "end_poi2") {
+            local_data = the_line_data.linestasE;
+            input_auto($(".order_mask2").attr("data-spAdName"), $(this));
+        }
+        e.stopPropagation();
+    });
